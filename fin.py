@@ -13,7 +13,7 @@ import ans
 # http://www.quantshare.com/sa-426-6-ways-to-download-free-intraday-and-tick-data-for-the-us-stock-market
 
 def initialize():
-    print "\nfinance v0.1"
+    print "\nfin v0.1"
     ans.pTime()
 
 # fetches info using robinhood api
@@ -40,6 +40,8 @@ class Stock:
         self.symbol = symbol
         self.info = stockInfoRobinhood(symbol)
 
+initialize()
 while(1):
     quote = raw_input("\nenter a quote:").upper()
     theQuote = Stock(quote)
+    print theQuote.info
