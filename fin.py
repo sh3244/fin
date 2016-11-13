@@ -26,32 +26,24 @@ def initialize():
     print "\nfinance v0.01"
     ans.pTime()
 
+# takes a symbol and an api link and fetches info
 def stockInfo(symbol, link):
-    # link = "http://finance.google.com/finance/info?&q="
-    # url = link + "%s" % (symbol)
-    # url = "https://www.google.com/finance?q=aapl"
     print symbol
-    # print "\tURL:", url
-    print link
+    print "\t", link
 
     u = urllib2.urlopen(link)
-    # print u
     content = u.read()
-    decode = []
-
-    # print content
     decode = json.loads(content)
-    # print decode
-
     full = []
 
-    count = 0
+    fieldCount = 0
     for d in decode:
         temp = decode[d]
         full.append([d, temp])
         print full[len(full)-1]
-        count += 1
-    print count
+        fieldCount += 1
+    print "\tNumber of Fields:", fieldCount, "\n"
+
     # loaded = False
     # index = 0
     # while loaded == False:
