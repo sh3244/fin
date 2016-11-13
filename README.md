@@ -2,6 +2,7 @@
 #### python finance playground/platform
 
 uses robinhood's api
+
 modular
 
 #### this is my Python learning playground
