@@ -8,12 +8,6 @@ import pandas
 import urllib2 # https://docs.python.org/2/howto/urllib2.html
 import json #https://docs.python.org/2.7/library/json.html
 
-from twilio.rest import TwilioRestClient
-ACCOUNT_SID = "AC2735c2d441c154487ab9b7be094b099a"
-AUTH_TOKEN = "c2cbe614f5cc3189546294cdbdd84311"
-
-client = TwilioRestClient(ACCOUNT_SID, AUTH_TOKEN)
-
 import ans
 
 # http://www.quantshare.com/sa-426-6-ways-to-download-free-intraday-and-tick-data-for-the-us-stock-market
