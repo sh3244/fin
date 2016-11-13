@@ -18,75 +18,34 @@ import ans
 
 # http://www.quantshare.com/sa-426-6-ways-to-download-free-intraday-and-tick-data-for-the-us-stock-market
 
-def stockInfoRobinhood(symbol):
-    # https: // api.robinhood.com / quotes / MSFT /
-    link = "https://api.robinhood.com/quotes/" + symbol + "/"
-    stockInfo(symbol, link)
 def initialize():
-    print "\nfinance v0.01"
+    print "\nfinance v0.1"
     ans.pTime()
 
-# takes a symbol and an api link and fetches info
-def stockInfo(symbol, link):
-    print symbol
+# fetches info using robinhood api
+def stockInfoRobinhood(symbol):
+    link = 'https://api.robinhood.com/quotes/' + symbol + '/'
+    print "\n...fetching stockInfo:", symbol
     print "\t", link
 
     u = urllib2.urlopen(link)
     content = u.read()
     decode = json.loads(content)
-    full = []
+    fields = []
 
     fieldCount = 0
-    for d in decode:
-        temp = decode[d]
-        full.append([d, temp])
-        print full[len(full)-1]
+    for fieldName in decode:
+        fieldValue = decode[fieldName]
+        fields.append([fieldName, fieldValue])
         fieldCount += 1
-    print "\tNumber of Fields:", fieldCount, "\n"
+    # print "\tfields:", fieldCount, "\n"
+    return fields
 
-    # loaded = False
-    # index = 0
-    # while loaded == False:
-    #     try:
-    #         decode = json.loads(content[index:])[0]
-    #         loaded = True
-    #         # print "decoded json from index:", index
-    #     except:
-    #         index += 1
-    #         if index > 99:
-    #             break
-    # print decode
+class Stock:
+    def __init__(self, symbol):
+        self.symbol = symbol
+        self.info = stockInfoRobinhood(symbol)
 
-    # aPrice = float(decode["el"])
-    # aChange = float(decode["ec"])
-    # aTime = decode["elt"]
-    # change = float(decode["c"])
-    # price = float(decode["l"])
-    # time = decode["lt"]
-    #
-    # print "\tPrice:", price
-    # print "\t\t", change
-    # print "\t", time
-    # print ""
-    # print "\tAfter Hours:", aPrice
-    # print "\t\t", aChange
-    # print "\t", aTime
-    # print "\n"
-
-
-
-class RobinhoodStock:
-    def __init__(self):
-        initialize()
-
-
-
-
-stocks = ["AAPL", "GOOG", "AMZN"]
-for stock in stocks:
-    stockInfoRobinhood(stock)
-# client.messages.create(
-#     to='6098488487',
-#     from_='6098425050',
-#     body='why',
-# )
+while(1):
+    quote = raw_input("\nenter a quote:").upper()
+    theQuote = Stock(quote)
