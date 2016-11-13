@@ -1,10 +1,8 @@
 # finance
-#### python finance playground/platform
+**a python finance playground** created by sam huang
 
-uses robinhood's api
++ uses robinhood's api for info
++ stock info
++ may grow a lot
 
-modular
-
-#### this is my Python learning playground
-
-this readme is current as of v0.1
+_this readme is current as of finance v0.1_
