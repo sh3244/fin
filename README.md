@@ -1,6 +1,6 @@
 #fin
 
-**a python finance playground** created by `sam huang`
+**a python finance playground**
 
 + uses robinhood's api for info
 + stock info
